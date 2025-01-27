@@ -1,21 +1,26 @@
-<html>
-    <head>
-        <style>
-            .box{
-                width: 100px;
-                height: 100px;
-                background-color: pink;
-                ;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hover</title>
+  <style>
+    .image-container {
+      width: 300px;
+      height: 200px;
+      background-image: url('https://i.pinimg.com/736x/dd/0b/60/dd0b604985bfee6a6a104aa664c7611c.jpg'); /* Default image */
+      background-size: cover;
+      transition: background-image 0.3s ease-in-out;
+    }
 
-            }
-            .box:hover{
-                width: 200px;
-                height:200px;
+    .image-container:hover {
+      background-image: url('https://www.rowanvets.co.uk/wp-content/uploads/2023/09/SEP-A-SMF-baby-rabbit-arrival.jpg'); /* Image shown on hover */
+    }
+  </style>
+</head>
+<body>
 
-            }
-        </style>
-    </head>
-    <body>
-        <div class="box"></div>
-    </body>
+  <div class="image-container"></div>
+
+</body>
 </html>

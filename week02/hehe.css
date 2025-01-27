@@ -1,16 +1,16 @@
 /* Body styling */
 body {
     font-family: 'Times New Roman', Times, serif, sans-serif;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #333; /* Dark text color */
+    background-color: #7bb0df; /* Light blue background */
+    color: #2ea587; /* Dark text color */
     text-align: center;
     padding: 50px;
   }
   
   /* Styling for a button */
   button {
-    background-color: #4CAF50; /* Green background */
-    color: white;
+    background-color: #c47500; /* Green background */
+    color: rgb(75, 188, 253);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
