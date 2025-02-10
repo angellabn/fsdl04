@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority To-Do List</title>
+</head>
+<body>
+
+    <h1>To-Do List with Priority</h1>
+
+    <!-- Input field for the task -->
+    <input type="text" id="taskInput" placeholder="Enter a task">
+
+    <!-- Dropdown to select task priority -->
+    <select id="priorityInput">
+        <option value="1">High Priority</option>
+        <option value="2">Medium Priority</option>
+        <option value="3">Low Priority</option>
+    </select>
+
+    <button onclick="addTask()">Add Task</button>
+
+    <!-- Ordered list to display tasks -->
+    <ol id="taskList"></ol>
+
+    <script>
+        // Array to hold tasks along with their priority
+        let tasks = [];
+
+        // Function to add tasks with priority
+        function addTask() {
+            // Get task input
+            var task = document.getElementById("taskInput").value;
+            // Get priority input
+            var priority = document.getElementById("priorityInput").value;
+
+            // Check if the task is empty
+            if (task === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            // Add the task with priority to the tasks array
+            tasks.push({ task: task, priority: parseInt(priority) });
+
+            // Sort tasks based on priority (1 is high priority, 2 is medium, 3 is low)
+            tasks.sort(function(a, b) {
+                return a.priority - b.priority;  // Sort tasks in ascending order of priority
+            });
+
+            // Clear the task input field
+            document.getElementById("taskInput").value = "";
+
+            // Update the task list on the page
+            updateTaskList();
+        }
+
+        // Function to update the task list in the ordered list (ol)
+        function updateTaskList() {
+            var taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";  // Clear the current list
+
+            // Loop through the sorted tasks and add them to the list
+            tasks.forEach(function(taskItem) {
+                var li = document.createElement("li");
+                li.textContent = taskItem.task + " (Priority: " + taskItem.priority + ")";
+                taskList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>

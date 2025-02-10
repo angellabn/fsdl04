@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple JavaScript</title>
+</head>
+<body>
+    <p id="myText">This is some text.</p>
+    <button onclick="changeText()">Click me to change text</button>
+
+    <script>
+        let count = 0;
+        const text = [
+            "text has changed",
+            "hogya yaar",
+            "ab bs",
+            "bye"
+        ];
+        // This is the JavaScript function
+        function changeText() {
+            // This changes the text inside the <p> tag
+            document.getElementById("myText").innerHTML = text[count];
+            count++
+            if (count === text.length) {
+                count = 0;
+        }
+    }
+    </script>
+</body>
+</html>
