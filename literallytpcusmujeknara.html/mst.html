@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Rotating Cube</title>
-    <link rel="stylesheet" href="mstt".css">
+    <title>Personalized Cute Message</title>
+    <link rel="stylesheet" href="mstt.css">
 </head>
 <body>
 
-<div class="cube-container">
-    <div class="cube">
-        <div class="cube-face front"></div>
-        <div class="cube-face back"></div>
-        <div class="cube-face left"></div>
-        <div class="cube-face right"></div>
-        <div class="cube-face top"></div>
-        <div class="cube-face bottom"></div>
-    </div>
+<div class="container">
+    <h1>Enter your name:</h1>
+    <input type="text" id="name-input" placeholder="Your name">
+    <button onclick="showMessage()">Submit</button>
+    <div id="message"></div>
 </div>
 
+<div id="hearts-container"></div>
+
+<script src="mst.js"></script>
 </body>
 </html>
