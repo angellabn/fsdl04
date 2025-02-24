@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+<body>
+
+    <h1>Countdown Timer</h1>
+
+    <!-- Input to set time for the countdown (in seconds) -->
+    <input type="number" id="timeInput" placeholder="Enter time in seconds">
+    <button onclick="startCountdown()">Start Countdown</button>
+
+    <h2 id="timerDisplay">00:00</h2>
+
+    <script>
+        // Function to start the countdown
+        function startCountdown() {
+            let time = document.getElementById("timeInput").value; // Get time in seconds
+            let timerDisplay = document.getElementById("timerDisplay");
+
+            // Check if the time input is valid
+            if (time === "" || isNaN(time) || time <= 0) {
+                alert("Please enter a valid number of seconds.");
+                return;
+            }
+
+            // Update the display every second
+            let countdown = setInterval(function() {
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+
+                // Format the timer display
+                timerDisplay.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+
+                // Stop the countdown when time reaches 0
+                if (time <= 0) {
+                    clearInterval(countdown);
+                    timerDisplay.textContent = "bs hogya bnd kr";
+                } else {
+                    time--; // Decrease time by 1 second
+                }
+            }, 1000); // Update every 1 second
+        }
+
+        // Function to format time to always show two digits (e.g., 09 instead of 9)
+        function formatTime(num) {
+            return num < 10 ? "0" + num : num;
+        }
+    </script>
+
+</body>
+</html>

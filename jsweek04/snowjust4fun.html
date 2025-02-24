@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowfall Particle Effect</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+            background-color: #2c3e50; /* Dark background for contrast */
+        }
+
+        canvas {
+            display: block; /* Make the canvas fill the screen */
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="snowCanvas"></canvas>
+
+    <script>
+        // Set up the canvas
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Make the canvas full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Array to hold snowflakes (particles)
+        let snowflakes = [];
+
+        // Snowflake constructor
+        function Snowflake(x, y, size, speed) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.speed = speed;
+            this.opacity = Math.random() * 0.5 + 0.3; // Random opacity between 0.3 and 0.8
+        }
+
+        // Create particles (snowflakes)
+        function createSnowflakes() {
+            for (let i = 0; i < 100; i++) {
+                let size = Math.random() * 3 + 2; // Size between 2px and 5px
+                let x = Math.random() * canvas.width; // Random x position
+                let y = Math.random() * canvas.height; // Random y position
+                let speed = Math.random() * 2 + 1; // Random speed between 1 and 3
+                snowflakes.push(new Snowflake(x, y, size, speed));
+            }
+        }
+
+        // Update the position of snowflakes
+        function updateSnowflakes() {
+            for (let i = 0; i < snowflakes.length; i++) {
+                let flake = snowflakes[i];
+                flake.y += flake.speed; // Move snowflake down
+                if (flake.y > canvas.height) {
+                    flake.y = -flake.size; // Reset snowflake to top if it reaches the bottom
+                }
+            }
+        }
+
+        // Draw the snowflakes onto the canvas
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous frame
+
+            for (let i = 0; i < snowflakes.length; i++) {
+                let flake = snowflakes[i];
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2); // Draw snowflake circle
+                ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`; // White color with random opacity
+                ctx.fill();
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            updateSnowflakes(); // Update snowflakes position
+            drawSnowflakes(); // Draw snowflakes on canvas
+            requestAnimationFrame(animate); // Call animate again for the next frame
+        }
+
+        // Initialize the snowfall effect
+        createSnowflakes();
+        animate();
+
+    </script>
+    
+</body>
+</html>
