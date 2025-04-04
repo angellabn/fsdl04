@@ -1,0 +1,36 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<p>record of student details.</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+Branch: <input type="text" ng-model="branchName"><br>
+Semester: <input type="text" ng-model="sem"><br>
+Roll Number: <input type="text" ng-model="rollNumber"><br>
+Batch: <input type="text" ng-model="batchNumber"><br>
+Result: <input type="text" ng-model="result"><br>
+<br>
+Full Name: {{firstName + " " + lastName}} <br>
+Branch: {{branchName}} <br>
+Semester: {{sem}} <br> 
+Roll Number: {{rollNumber + " " + batchNumber}} <br>
+Result: {{result}} <br>
+
+
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "Angella";
+    $scope.lastName= "B";
+});
+</script>
+
+</body>
+</html>
