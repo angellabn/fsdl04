@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AngularJS Hello World</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+<style> body {
+font-family: Arial, sans-serif; max-width: 600px;
+margin: 0 auto; padding: 20px;
+}
+.input-group {
+margin-bottom: 15px;
+}
+input { padding: 8px; width: 100%;
+box-sizing: border-box; }
+.output {
+background-color: #f5f5f5; padding: 15px;
+border-radius: 4px; margin-top: 20px; } h1 {
+color: #2c3e50; }
+</style>
+</head>
+<body ng-app="helloWorldApp">
+<div ng-controller="HelloController">
+<h1>AngularJS Hello World</h1>
+<div class="input-group">
+<label for="name">Enter your name:</label>
+<input type="text" id="name" ng-model="user.name" placeholder="Your name">
+</div>
+
+<div class="input-group">
+<label for="message">Enter a message:</label>
+ 
+<input type="text" id="message" ng-model="user.message" placeholder="Your message">
+</div>
+<div class="output">
+<h3>Output:</h3>
+<p>Hello, <strong>{{ user.name || "World" }}</strong>!</p>
+<p>Your message: {{ user.message || "No message yet." }}</p>
+<p>The current date is: {{ getCurrentDate() }}</p>
+<p>Characters in name: {{ (user.name || "").length }}</p>
+<p>Characters in message: {{ (user.message || "").length }}</p>
+</div>
+</div> <script>
+var app = angular.module('helloWorldApp', []); app.controller('HelloController', function($scope) {
+$scope.user = { name: "",
+message: "" };
+$scope.getCurrentDate = function() {
+return new Date().toLocaleDateString(); } });
+</script></body>
+</html>
